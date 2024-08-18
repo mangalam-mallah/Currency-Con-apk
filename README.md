@@ -25,13 +25,12 @@ The app uses the [exchangerates.io](https://exchangerates.io) API to fetch the l
 ### Example API Usage
 
 ```javascript
-fetch('https://api.exchangerates.io/latest?base=INR')
-  .then(response => response.json())
-  .then(data => {
-    const rate = data.rates['USD']; // Example for USD
-    const convertedAmount = amountInINR * rate;
-    setConvertedAmount(convertedAmount);
-  })
-  .catch(error => {
-    showSnackbar('Error fetching exchange rates');
-  });
+ async (): Promise<Currency[]> => {
+  try {
+    const response = await fetch('http://api.exchangeratesapi.io/v1/latest?access_key=73b66949a8d4fdd57ad020f96392237d');
+    const data = await response.json();
+
+    // Assuming the data structure from the API response
+    const rates = data.rates;
+    // Add the INR to EUR conversion rate
+    const inrToEurRate = 1 / rates['INR'];
