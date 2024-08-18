@@ -27,7 +27,7 @@ The app uses the [exchangerates.io](https://exchangerates.io) API to fetch the l
 ```javascript
  async (): Promise<Currency[]> => {
   try {
-    const response = await fetch('http://api.exchangeratesapi.io/v1/latest?);
+    const response = await fetch('http://api.exchangeratesapi.io/v1/latest?');
     const data = await response.json();
 
     // Assuming the data structure from the API response
